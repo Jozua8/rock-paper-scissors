@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors Game</title>
+</head>
+<script>
+    const options = ['rock, paper, scissors'];
+    const hands = ['rock>scissors', 'scissors>paper', 'paper>rock'];
+   function getComputerChoice(){
+    let choice = options[th.floor(Math.random()*options.length)]
+    return choice
+   };
+   function getPlayerChoice(){
+    let choice = prompt('Choose rock/paper/scissor!').toLowerCase();
+    if (options.includes(choice)) {
+        return choice;
+    } else {
+        alert(`Invaild input: "${choice}"`);
+        let chooseAgain = playerSelections();
+        return chooseAgain
+    }
+   };
+
+
+</script>
+<body>
+    
+</body>
+</html>
