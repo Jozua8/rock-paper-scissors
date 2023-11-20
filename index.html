@@ -6,22 +6,76 @@
     <title>Rock Paper Scissors Game</title>
 </head>
 <script>
-    const options = ['rock, paper, scissors'];
+    const options = ["rock", "paper", "scissors"];
     const hands = ['rock>scissors', 'scissors>paper', 'paper>rock'];
-   function getComputerChoice(){
-    let choice = options[th.floor(Math.random()*options.length)]
+   
+   
+    function getComputerChoice(){
+    let choice = options[Math.floor(Math.random()*options.length)]
     return choice
    };
-   function getPlayerChoice(){
+
+   
+   function getPlayerChoice(options){
     let choice = prompt('Choose rock/paper/scissor!').toLowerCase();
     if (options.includes(choice)) {
         return choice;
     } else {
         alert(`Invaild input: "${choice}"`);
-        let chooseAgain = playerSelections();
+        let chooseAgain = playerSelection();
         return chooseAgain
     }
    };
+
+
+   function playRound(playerSelection, computerSelection){
+    let compete = `${computerSelection}>${playerSelection}`
+    if (computerSelection == playerSelection){
+        alert("It's a draw!")
+        return 0
+    }
+    else if (hands.includes(compete)){
+        alert(`Computer wins! ${computerSelection.charAt(0).toUpperCase() + computerSelection.slice(1)} beats ${playerSelection}.`)
+        return 1
+    }
+    else {
+        alert(`Player wins! ${playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1)} beats ${computerSelection}.`)
+        return 2
+    }
+   };
+
+   function game(){
+      let computerScore = 0;
+      let playerScore = 0;
+      for (let a = 0; a < 5; ++a){
+        let go = playRound(getComputerChoice(), getPlayerChoice());
+    
+       if (go == 0){
+        --a
+        console.log(go)
+       }
+        else if (go == 1){
+        computerScore += 1
+        console.log(go)
+      }
+      else {
+        playerScore += 1
+        console.log(go)
+      }
+      console.log('Player Score =' + playerScore + 'Computer Score =' + computerScore)
+     }
+     return declareWinner(computerScore, playerScore)
+   };
+
+   function declareWinner(computerScore, playerScore){
+    if (computerScore > playerScore){
+        return "Player loses!"
+    } else {
+        return "Player wins!"
+    }
+   };
+
+  console.log(game())
 
 
 </script>
